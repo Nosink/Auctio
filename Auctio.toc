@@ -1,0 +1,93 @@
+
+## Title: Auctio
+
+## Interface:20506
+
+## Category: Auctions
+## Category-enGB: X 
+## Category-esES: X 
+## Category-esMX: X 
+## Category-ruRU: X 
+## Category-deDE: X 
+## Category-frFR: X 
+## Category-itIT: X 
+## Category-ptBR: X 
+## Category-koKR: X 
+## Category-zhCN: X 
+## Category-zhTW: X 
+
+## Notes: Shows item level, quality borders and durability information on character and target frames about equipped items.
+## Notes-enGB: X
+## Notes-esES: X
+## Notes-esMX: X
+## Notes-ruRU: X
+## Notes-deDE: X
+## Notes-frFR: X
+## Notes-itIT: X
+## Notes-ptBR: X
+## Notes-koKR: X
+## Notes-zhCN: X
+## Notes-zhTW: X
+
+## Author: Nosink Ð
+## Version: 0.1.0
+
+## IconTexture: Interface\Icons\inv_misc_coin_05
+
+## SavedVariables: AuctioDB
+## SavedVariablesPerCharacter: AuctioPCDB
+
+# Enum
+enum/enum.lua
+# Enum - Data
+enum/data/classType.lua
+enum/data/reactionType.lua
+
+# Events
+event/bus.lua
+
+# Database
+database/database.lua
+
+# Localization
+localization/localization.lua
+
+# Settings
+settings/builder/helper.lua
+settings/builder/panel.lua
+settings/builder/section.lua
+
+# Settings - Frames
+settings/frames/checkbox.lua
+settings/frames/dropDown.lua
+settings/frames/editBox.lua
+settings/frames/slider.lua
+settings/frames/text.lua
+
+# Addon - Database
+addon/defaults.lua
+
+# Addon - Locales
+addon/locales/enUS-enGB.lua
+addon/locales/deDE.lua
+addon/locales/esES-esMX.lua
+addon/locales/frFR.lua
+addon/locales/itIT.lua
+addon/locales/koKR.lua
+addon/locales/ptBR.lua
+addon/locales/ruRU.lua
+addon/locales/zhCN.lua
+addon/locales/zhTW.lua
+
+# Addon - Settings
+addon/settings/panel.lua
+addon/settings/commands.lua
+
+# Addon - MVC
+# ---------------------
+# ---------------------
+# ---------------------
+# ---------------------
+
+# Addon - Core
+addon.lua
