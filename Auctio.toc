@@ -70,16 +70,7 @@ settings/frames/text.lua
 addon/defaults.lua
 
 # Addon - Locales
-addon/locales/enUS-enGB.lua
-addon/locales/deDE.lua
-addon/locales/esES-esMX.lua
-addon/locales/frFR.lua
-addon/locales/itIT.lua
-addon/locales/koKR.lua
-addon/locales/ptBR.lua
-addon/locales/ruRU.lua
-addon/locales/zhCN.lua
-addon/locales/zhTW.lua
+addon/locales/locales.xml
 
 # Addon - Settings
 addon/settings/panel.lua
@@ -87,14 +78,11 @@ addon/settings/commands.lua
 
 # Addon - MVC
 # ---------------------
+addon/controller/frame.lua
 # ---------------------
 # ---------------------
+addon/view/tab.lua
 # ---------------------
-
-# Addon - MVC
-addon/auctionhouse/model.lua
-addon/auctionhouse/view.lua
-addon/auctionhouse/controller.lua
 
 # Addon - Core
 addon.lua
