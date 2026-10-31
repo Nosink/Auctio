@@ -16,7 +16,7 @@
 ## Category-zhCN: X 
 ## Category-zhTW: X 
 
-## Notes: Shows item level, quality borders and durability information on character and target frames about equipped items.
+## Notes: X
 ## Notes-enGB: X
 ## Notes-esES: X
 ## Notes-esMX: X
@@ -88,6 +88,11 @@ addon/settings/commands.lua
 # ---------------------
 # ---------------------
 # ---------------------
+
+# Addon - MVC
+addon/auctionhouse/model.lua
+addon/auctionhouse/view.lua
+addon/auctionhouse/controller.lua
 
 # Addon - Core
 addon.lua
