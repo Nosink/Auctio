@@ -1,7 +1,7 @@
 local name, ns = ...
 local L = ns.L
 
-SLASH_AUCTIO = "/auctio"
+SLASH_AUCTIO1 = "/auctio"
 
 local function openSettingsPanel()
     if Settings and Settings.OpenToCategory and ns.settingsCategory then
@@ -18,8 +18,7 @@ local function getVersion()
     return C_AddOns.GetAddOnMetadata(name, "Version")
 end
 
-SlashCmdList.SLASH_AUCTIO = function(message)
-    print(message)
+SlashCmdList.AUCTIO = function(message)
     message = (message or ""):match("^%s*(.-)%s*$"):lower()
 
     if (message == "" or message == "config" or message == "options" or message == "settings") then
