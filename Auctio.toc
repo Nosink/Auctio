@@ -37,34 +37,8 @@
 ## SavedVariables: AuctioDB
 ## SavedVariablesPerCharacter: AuctioPCDB
 
-# Enum
-enum/enum.lua
-# Enum - Data
-enum/data/classType.lua
-enum/data/reactionType.lua
-enum/data/expansionType.lua
-
-# Events
-event/bus.lua
-
-# Database
-database/database.lua
-
-# Localization
-localization/localization.lua
-
-# Settings
-settings/builder/helper.lua
-settings/builder/panel.lua
-settings/builder/section.lua
-settings/builder/validators.lua
-
-# Settings - Frames
-settings/frames/checkbox.lua
-settings/frames/dropDown.lua
-settings/frames/editBox.lua
-settings/frames/slider.lua
-settings/frames/text.lua
+# _CORE
+core.xml
 
 # Addon - Database
 addon/defaults.lua
