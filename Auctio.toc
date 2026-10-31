@@ -42,6 +42,7 @@ enum/enum.lua
 # Enum - Data
 enum/data/classType.lua
 enum/data/reactionType.lua
+enum/data/expansionType.lua
 
 # Events
 event/bus.lua
@@ -56,6 +57,7 @@ localization/localization.lua
 settings/builder/helper.lua
 settings/builder/panel.lua
 settings/builder/section.lua
+settings/builder/validators.lua
 
 # Settings - Frames
 settings/frames/checkbox.lua
