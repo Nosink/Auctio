@@ -52,10 +52,10 @@ addon/settings/commands.lua
 
 # Addon - MVC
 # ---------------------
-addon/controller/frame.lua
-# ---------------------
 # ---------------------
 addon/view/tab.lua
+# ---------------------
+addon/controller/frame.lua
 # ---------------------
 
 # Addon - Core
