@@ -1,103 +1,58 @@
 local name, ns = ...
 
-local tab = nil;
-local panel = nil;
+local tab = {}
+local frame = { numTabs = 0, selectedTab = 1, }
 
-local auctionPanels = {
-    "AuctionFrameBrowse",
-    "AuctionFrameBid",
-    "AuctionFrameAuctions",
-    "AuctionFramePost",
-}
-
-local function getTabName(frame, tabID)
-    return frame:GetName() .. "Tab" .. tabID
+local function getAuctionFrame()
+    return _G["AuctionFrame"]
 end
 
-local function getTab(frame, tabID)
-    return _G[getTabName(frame, tabID)]
-end
-
-local function setAuctionPanelsShown(shown)
-    for _, panelName in ipairs(auctionPanels) do
-        local auctionPanel = _G[panelName]
-        if auctionPanel then
-            auctionPanel:SetShown(shown)
-        end
-    end
-end
-
-local function showPanel()
-    setAuctionPanelsShown(false)
-    panel:Show()
-end
-
-local function hidePanel()
-    if panel then
-        panel:Hide()
-    end
-end
-
-local function updateNumTabs(frame)
+local function setNumTabs()
     frame.numTabs = frame.numTabs + 1
     PanelTemplates_SetNumTabs(frame, frame.numTabs)
 end
 
-local function hookExistingTabs(frame)
-    for index = 1, frame.numTabs - 1 do
-        local auctionTab = getTab(frame, index)
-        if auctionTab then
-            auctionTab:HookScript("OnClick", hidePanel)
-        end
-    end
-end
 
-local function onTabClick(self, frame)
-    PanelTemplates_SetTab(frame, self:GetID())
-    showPanel()
-end
+local function createTab()
+    local tabName = frame:GetName() .. "Tab" .. frame.numTabs
+    local previousTab = _G[frame:GetName() .. "Tab" .. frame.numTabs - 1]
 
-local function createTab(frame)
-    local previousTab = getTab(frame, frame.numTabs - 1)
-
-    tab = CreateFrame("Button", getTabName(frame, frame.numTabs), frame, "CharacterFrameTabButtonTemplate")
-    tab:SetID(frame.numTabs)
-    tab:SetText(name .. " Scan")
+    tab = CreateFrame("Button", tabName, frame, "CharacterFrameTabButtonTemplate", frame.numTabs)
     tab:SetPoint("TOPLEFT", previousTab, "TOPRIGHT", -8, 0)
+end
+
+local function setText(params)
+    local text = params.text or (name .. " Tab")
+    tab:SetText(text)
+end
+
+local function tabResize()
+    local width = PanelTemplates_GetTabWidth(tab)
+    PanelTemplates_TabResize(tab, 0, width, 0, 0, 0)
+end
+
+local function setOnClick(params)
     tab:SetScript("OnClick", function(self)
-        onTabClick(self, frame)
+        PanelTemplates_SetTab(frame, self:GetID())
+        if params.onClick then
+            params.onClick()
+        end
     end)
-    PanelTemplates_TabResize(tab, 0, 110, 110, 110, 0)
 end
 
-local function createPanel(frame)
-    panel = CreateFrame("Frame", name .. "Panel", frame)
-    panel:SetPoint("TOPLEFT", frame, "TOPLEFT", 12, -80)
-    panel:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -12, 12)
-    panel:Hide()
+local function setTab()
+    PanelTemplates_SetTab(frame, frame.selectedTab or 1)
 end
 
-local function onButtonClick()
-    print("clicked")
+function ns.AddTab(params)
+    frame = getAuctionFrame()
+
+    setNumTabs()
+    createTab()
+    setText(params)
+    tabResize()
+    setOnClick(params)
+    setTab()
+
+    return tab
 end
-
-local function createButton()
-    local button = CreateFrame("Button", name .. "Button", panel, "UIPanelButtonTemplate")
-    button:SetText(name)
-    button:SetSize(120, 30)
-    button:SetPoint("CENTER")
-    button:SetScript("OnClick", onButtonClick)
-end
-
-local function onAuctionHouseShow(_, frame)
-    if tab then return end
-    updateNumTabs(frame)
-
-    hookExistingTabs(frame)
-    createTab(frame)
-
-    createPanel(frame)
-    createButton()
-end
-
-ns.bus:RegisterEvent(name .. "_AUCTION_HOUSE_SHOW", onAuctionHouseShow)

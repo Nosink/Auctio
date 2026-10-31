@@ -54,6 +54,8 @@ addon/settings/commands.lua
 # ---------------------
 # ---------------------
 addon/view/tab.lua
+addon/view/scanView.lua
+addon/view/postView.lua
 # ---------------------
 addon/controller/frame.lua
 # ---------------------
